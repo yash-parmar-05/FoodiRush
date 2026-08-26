@@ -1,0 +1,280 @@
+/* ============================================================
+   CARD ANIMATION
+   ============================================================ */
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes btnPressDown {
+  0% { transform: scale(1); }
+  45% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   CARD SHELL (Generous, readable proportions)
+   ============================================================ */
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(232, 216, 200, 0.85);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(80, 40, 10, 0.06);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 385px;
+  animation: cardFadeUp 0.35s ease-out both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(80, 40, 10, 0.12);
+  border-color: rgba(240, 94, 10, 0.35);
+}
+
+/* ============================================================
+   IMAGE WRAPPER & SKELETON SHIMMER
+   ============================================================ */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f4ede3;
+}
+
+.card-image-wrapper.is-loading {
+  background: linear-gradient(
+    90deg,
+    #f4ede3 0%,
+    #ebe2d5 50%,
+    #f4ede3 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.card-image-wrapper img.card-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out, transform 0.4s ease;
+}
+
+.card-image-wrapper img.card-product-img.loaded {
+  opacity: 1;
+}
+
+.card:hover .card-image-wrapper img {
+  transform: scale(1.06);
+}
+
+/* ============================================================
+   CUISINE BADGE (Optimized: No heavy backdrop-filter blur)
+   ============================================================ */
+.card-cuisine-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  background: #ffffff;
+  color: #e84d00;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 94, 10, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+}
+
+/* ============================================================
+   CARD BODY
+   ============================================================ */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  padding: 18px 20px 20px;
+  gap: 14px;
+  background: transparent;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ============================================================
+   CARD TITLE
+   ============================================================ */
+.card-title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 750;
+  color: #1c1713;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 2.7em;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   PRICE
+   ============================================================ */
+.card-price {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #e84d00;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+/* ============================================================
+   ADD TO CART BUTTON
+   ============================================================ */
+.cart-btn {
+  width: 100%;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7c18 0%, #e84d00 100%);
+  color: white;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(240, 94, 10, 0.24);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(240, 94, 10, 0.34);
+}
+
+.cart-btn:active {
+  transform: scale(0.97);
+}
+
+/* ============================================================
+   ADDED STATE
+   ============================================================ */
+.cart-btn--added {
+  background: linear-gradient(135deg, #20b870 0%, #17965a 100%);
+  box-shadow: 0 4px 14px rgba(23, 150, 90, 0.22);
+}
+
+.cart-btn--added:hover {
+  background: linear-gradient(135deg, #22c87a 0%, #1aac68 100%);
+  box-shadow: 0 8px 20px rgba(23, 150, 90, 0.30);
+  transform: translateY(-1px);
+}
+
+.cart-btn--added .btn-check {
+  animation: checkPop 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  display: inline-block;
+}
+
+/* ============================================================
+   BUTTON CONTENT
+   ============================================================ */
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.btn-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.btn-check {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .card {
+    min-height: 375px;
+  }
+}
+
+@media (max-width: 860px) {
+  .card {
+    min-height: 360px;
+    border-radius: 18px;
+  }
+
+  .card-body {
+    padding: 16px 16px 18px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 580px) {
+  .card {
+    min-height: 340px;
+    border-radius: 16px;
+  }
+
+  .card-title {
+    font-size: 0.98rem;
+  }
+
+  .card-price {
+    font-size: 1.12rem;
+  }
+
+  .cart-btn {
+    height: 42px;
+    font-size: 0.88rem;
+  }
+}

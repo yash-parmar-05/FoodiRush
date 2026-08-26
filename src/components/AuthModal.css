@@ -1,0 +1,239 @@
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: overlayFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.auth-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.auth-tabs {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 11px 16px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #64748b;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-tab.active {
+  background: #ffffff;
+  color: #ff5722;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: scale(1.02);
+}
+
+.auth-header-animated {
+  margin-bottom: 20px;
+  text-align: center;
+  animation: tabFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-header-animated h2 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.auth-header-animated p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.auth-error-banner {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  animation: tabFadeSlide 0.3s ease-out;
+}
+
+.auth-form-animated {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: tabFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.field-slide-in {
+  animation: fieldExpand 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-field label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.auth-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-icon {
+  position: absolute;
+  left: 14px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.auth-input-wrap input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.93rem;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.auth-input-wrap input:focus {
+  border-color: #ff5722;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.12);
+}
+
+.auth-input-wrap input:focus + .auth-icon,
+.auth-input-wrap:focus-within .auth-icon {
+  color: #ff5722;
+}
+
+.auth-submit-btn {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #ff5722 0%, #f4511e 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.98rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 87, 34, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 87, 34, 0.45);
+}
+
+.auth-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Smooth Keyframe Animations */
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.94) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes tabFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fieldExpand {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
