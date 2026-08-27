@@ -240,7 +240,7 @@ function CustomerLayout() {
         <h2>⚠️</h2>
         <p>{error}</p>
         <p style={{ marginTop: "10px" }}>
-          Please make sure your backend server is running on http://localhost:5000
+          Please make sure the backend server is reachable.
         </p>
       </div>
     );
